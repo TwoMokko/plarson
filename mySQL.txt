@@ -1,0 +1,14 @@
+SELECT `month`, DAY(LAST_DAY(CONCAT(YEAR(NOW()), '-', `month`, '-01'))) AS `days` FROM (
+    SELECT @i := 1 AS `month`
+	UNION SELECT @i := @i + 1
+	UNION SELECT @i := @i + 1
+	UNION SELECT @i := @i + 1
+	UNION SELECT @i := @i + 1
+	UNION SELECT @i := @i + 1
+	UNION SELECT @i := @i + 1
+	UNION SELECT @i := @i + 1
+	UNION SELECT @i := @i + 1
+	UNION SELECT @i := @i + 1
+	UNION SELECT @i := @i + 1
+	UNION SELECT @i := @i + 1
+) AS `months`

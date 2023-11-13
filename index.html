@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>PlarsON</title>
+        <link rel="stylesheet" href="css/main.css" type="text/css">
+        <script>
+            function Loader() {
+                let funcs = [];
+
+                this.waitLoad = function(func) {
+                    funcs.push(func);
+                }
+
+                this.isLoad = function() {
+                    for (const func of funcs) func();
+                }
+            }
+
+            let loader = new Loader();
+
+            function $(func) {
+                loader.waitLoad(func);
+            }
+
+            document.addEventListener('readystatechange', (event) => {
+                if (event.target.readyState === 'complete') loader.isLoad();
+            });
+        </script>
+    </head>
+    <body>
+        <div class="chat">
+            <div class="header"></div>
+            <div class="main">
+                <div class="users">
+                    <div>Друг</div>
+                    <div>Сосед</div>
+                    <div>Ваня такой человек который дал мне тогда тетрадь</div>
+                    <div>НаташаМашавашаподруганати</div>
+                    <div>Мама</div>
+                    <div>Дедушка</div>
+                    <div>Сосед</div>
+                    <div>Ваня</div>
+                    <div>Наташа</div>
+                    <div>Мама</div>
+                    <div>Дедушка</div>
+                    <div>Сосед</div>
+                    <div>Ваня</div>
+                    <div>Наташа</div>
+                    <div>Мама</div>
+                    <div>Дедушка</div>
+                    <div>Сосед</div>
+                    <div>Ваня</div>
+                    <div>Наташа</div>
+                    <div>Мама</div>
+                    <div>Дедушка</div>
+                </div>
+                <div class="messages">
+                    <div class="from"><div>1</div></div>
+                    <div class="until"><div>Сообщение</div></div>
+                    <div class="from"><div>Сообщение</div></div>
+                    <div class="until"><div>Сообщение</div></div>
+                    <div class="until"><div>Сообщение gjlksjglktrjh slhgjslkhjstrh shtgjhslhjt isjhjdlhjslhjt isthshklsth ishtishtstkh iosthgoisthstjhlk hgshglshjlksgj fhgshgk kfhgk kshgkjhsg jkhkh</div></div>
+                    <div class="from"><div>Сообщение</div></div>
+                    <div class="until"><div>Сообщение</div></div>
+                    <div class="from"><div>Сообщение</div></div>
+                    <div class="until"><div>Сообщение</div></div>
+                    <div class="from"><div>Сообщение gjlksjglktrjh slhgjslkhjstrh shtgjhslhjt isjhjdlhjslhjt isthshklsth ishtishtstkh iosthgoisthstjhlk hgshglshjlksgj fhgshgk kfhgk kshgkjhsg jkhkh</div></div>
+                    <div class="from"><div>Сообщение</div></div>
+                    <div class="until"><div>Сообщение</div></div>
+                    <div class="from"><div>Сообщение</div></div>
+                    <div class="until"><div>Сообщение</div></div>
+                    <div class="until"><div>Сообщение gjlksjglktrjh slhgjslkhjstrh shtgjhslhjt isjhjdlhjslhjt isthshklsth ishtishtstkh iosthgoisthstjhlk hgshglshjlksgj fhgshgk kfhgk kshgkjhsg jkhkh</div></div>
+                    <div class="from"><div>Сообщение</div></div>
+                    <div class="until"><div>Сообщение</div></div>
+                    <div class="from"><div>Сообщение</div></div>
+                </div>
+            </div>
+            <div class="bottom">
+                <button>+</button>
+                <div><textarea name="message" placeholder="message"></textarea></div>
+                <button>🡅</button>
+            </div>
+        </div>
+        <script>
+            $(() => { alert('IS LOAD'); });
+        </script>
+    </body>
+</html>

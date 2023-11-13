@@ -1,0 +1,61 @@
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+body { margin: 0; }
+
+@mixin UserList {
+	.users {
+		flex: none; width: 200px; background-color: darkgray; height: 100%;  overflow: auto;
+		> div {
+			overflow: hidden; padding: 7px 15px; text-overflow: ellipsis; white-space: nowrap; cursor: pointer;
+			&:hover { color: white; }
+		}
+	}
+}
+
+@mixin Messages {
+	.messages {
+		flex: auto; overflow: auto; padding: 15px;
+		> div {
+			> div { display: inline-block; max-width: 60%; border-radius: 10px; padding: 10px; }
+			&:not(:last-child) { margin-bottom: 10px; }
+			&.from > div { background-color: darkseagreen; }
+			&.until {
+				text-align: right;
+				> div { background-color: antiquewhite; text-align: initial; }
+			}
+		}
+	}
+}
+
+@mixin Bottom {
+	.bottom {
+		flex: none; background-color: gray; min-height: 100px; display: flex; align-items: center;
+		> button {
+			width: 50px; height: 50px; margin: 0 10px; outline: none; cursor: pointer; border-radius: 15px; font-size: 24px;
+			background-color: transparent; border: 1px solid #ffffff40; color: #ffffff40;
+			&:hover { background-color: #ffffff40; color: white; }
+		}
+		> div {
+			vertical-align: top; height: 50px; flex: auto; padding: 10px; background-color: #ffffff40; border-radius: 15px;
+			> textarea { width: 100%; outline: none; border: none;
+				padding: 0; background-color: transparent; resize: none;
+				&::-webkit-scrollbar { width: 0; height: 0; }
+			}
+		}
+	}
+}
+
+@mixin Chat {
+	.chat {
+		width: 100%; height: 100%; display: flex; flex-direction: column;
+		> .header { flex: none; background-color: gray; min-height: 50px; }
+		> .main {
+			flex: auto; display: flex; overflow: hidden;
+			@include UserList;
+			@include Messages;
+		}
+		@include Bottom;
+	}
+}
+
+@include Chat;
