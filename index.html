@@ -6,15 +6,23 @@
         <link rel="stylesheet" href="css/main.css" type="text/css">
         <script>
             function Loader() {
+                let isLoader = false;
                 let funcs = [];
 
                 this.waitLoad = function(func) {
-                    funcs.push(func);
+                    isLoader ? func(): funcs.push(func);
                 }
 
                 this.isLoad = function() {
                     for (const func of funcs) func();
                 }
+
+                document.addEventListener('readystatechange', (event) => {
+                    if (event.target.readyState === 'complete') {
+                        isLoader = true;
+                        loader.isLoad();
+                    }
+                });
             }
 
             let loader = new Loader();
@@ -22,10 +30,6 @@
             function $(func) {
                 loader.waitLoad(func);
             }
-
-            document.addEventListener('readystatechange', (event) => {
-                if (event.target.readyState === 'complete') loader.isLoad();
-            });
         </script>
     </head>
     <body>
